@@ -27,6 +27,8 @@ spec:
         ports:
         - containerPort: 5678
         env:
+        - name: N8N_SECURE_COOKIE
+          value: "false"
         - name: N8N_HOST
           value: "n8n.my-domain.com"
         - name: N8N_PORT
