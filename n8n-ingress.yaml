@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: n8n-ingress
+  labels:
+    app: n8n
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # Add any other annotations specific to your Ingress controller (e.g., cert-manager for TLS)
+spec:
+  rules:
+    - host: n8n.my-domain.com # <<< IMPORTANT: Replace with your actual domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 80
+  # Uncomment and configure for TLS (requires cert-manager or similar)
+  # tls:
+  #   - hosts:
+  #     - n8n.example.com # <<< IMPORTANT: Replace with your actual domain
+  #     secretName: n8n-tls-secret # Name of the Kubernetes Secret containing your TLS certificate and key
