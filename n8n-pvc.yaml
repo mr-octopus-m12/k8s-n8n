@@ -5,6 +5,7 @@ metadata:
   labels:
     app: n8n
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
